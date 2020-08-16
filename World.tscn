@@ -1,0 +1,155 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://DotsManager.gd" type="Script" id=1]
+[ext_resource path="res://DotsTrainer.gd" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 1024, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1024, 2 )
+
+[sub_resource type="QuadMesh" id=3]
+size = Vector2( 4, 600 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2, 300 )
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 192, 48 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 96, 24 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 64, 32 )
+
+[sub_resource type="QuadMesh" id=8]
+size = Vector2( 500, 64 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 250, 32 )
+
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://coolvetica.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 24
+font_data = SubResource( 10 )
+
+[node name="World" type="Node2D"]
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="BorderTop" type="StaticBody2D" parent="Borders"]
+position = Vector2( 512, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Borders/BorderTop"]
+modulate = Color( 0.913725, 0.592157, 0.839216, 1 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderTop"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="BorderBottom" type="StaticBody2D" parent="Borders"]
+position = Vector2( 512, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Borders/BorderBottom"]
+modulate = Color( 0.913725, 0.592157, 0.839216, 1 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderBottom"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="BorderLeft" type="StaticBody2D" parent="Borders"]
+position = Vector2( 0, 300 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Borders/BorderLeft"]
+modulate = Color( 0.913725, 0.592157, 0.839216, 1 )
+mesh = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderLeft"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="BorderRight" type="StaticBody2D" parent="Borders"]
+position = Vector2( 1024, 300 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Borders/BorderRight"]
+modulate = Color( 0.913725, 0.592157, 0.839216, 1 )
+mesh = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderRight"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="Endpoint" type="StaticBody2D" parent="."]
+position = Vector2( 512, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Endpoint"]
+modulate = Color( 0.847059, 0.443137, 0.372549, 1 )
+mesh = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Endpoint"]
+visible = false
+shape = SubResource( 6 )
+
+[node name="Startpoint" type="StaticBody2D" parent="."]
+position = Vector2( 512, 576 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Startpoint"]
+modulate = Color( 0.258824, 0.576471, 0.564706, 1 )
+mesh = SubResource( 7 )
+
+[node name="DotsManager" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="DotsTrainer" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2( 510, 330.909 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Obstacle"]
+modulate = Color( 0.494118, 0.180392, 0.72549, 1 )
+mesh = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+visible = false
+shape = SubResource( 9 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 52.7273
+margin_top = 37.2727
+margin_right = 139.727
+margin_bottom = 51.2727
+custom_fonts/font = SubResource( 11 )
+text = "Generation: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
