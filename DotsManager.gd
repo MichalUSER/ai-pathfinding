@@ -29,4 +29,4 @@ func spawnDot(moves):
 
 func _ready():
 	for i in range(numberOfDots):
-		spawnDot(generateMoves(randi()%600+20))
+		spawnDot(generateMoves(randi()%400+20))

@@ -4,6 +4,7 @@ onready var dotsmanager = get_node("../DotsManager")
 onready var label = get_node("../Label")
 
 var dots = []
+var minStep = 400
 var gen = 0
 
 var mutationRate = 0.1
@@ -20,15 +21,21 @@ func naturalSelection(fitnessSum):
 	for dot in dots:
 		runningSum += dot[0]
 		if runningSum > randomNumber:
-			return dot[1]
+			return dot[2]
 			
 func getBestDot():
 	var maxFitness = 0
+	var reachedGoal = false
 	var moves = []
 	for dot in dots:
 		if dot[0] > maxFitness:
 			maxFitness = dot[0]
-			moves = dot[1]
+			reachedGoal = dot[1]
+			moves = dot[2]
+
+	if reachedGoal == true:
+		minStep = moves.size()
+
 	return moves
 
 func mutate(moves):
