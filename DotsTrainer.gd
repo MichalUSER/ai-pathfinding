@@ -21,6 +21,15 @@ func naturalSelection(fitnessSum):
 		runningSum += dot[0]
 		if runningSum > randomNumber:
 			return dot[1]
+			
+func getBestDot():
+	var maxFitness = 0
+	var moves = []
+	for dot in dots:
+		if dot[0] > maxFitness:
+			maxFitness = dot[0]
+			moves = dot[1]
+	return moves
 
 func mutate(moves):
 	var movesCopy = []
@@ -37,7 +46,7 @@ func mutate(moves):
 func _process(delta):
 	if dotsmanager.aliveDots == 0:
 		var fitnessSum = calculateFitnessSum()
-		dotsmanager.spawnDot(naturalSelection(fitnessSum))
+		dotsmanager.spawnDot(getBestDot())
 		for i in range(dotsmanager.numberOfDots - 1):
 			dotsmanager.spawnDot(mutate(naturalSelection(fitnessSum)))
 		dots.clear()
