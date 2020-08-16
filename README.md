@@ -5,4 +5,5 @@
 - It takes them approximately 3 generations to get to the destination
 - If they touch anything they sort of die
 - There is one obstacle they need to avoid
+
 ![Example of the smart dots](image.png)
